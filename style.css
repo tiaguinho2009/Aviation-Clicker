@@ -7,14 +7,15 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    color: #333;
+    background-color: #121212;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 10px;
+    transition: background-color 0.5s;
 }
 
 /* Header */
@@ -25,7 +26,8 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    color: #007bff;
+    color: #ff6347;
+    animation: fadeIn 1s ease-in;
 }
 
 /* Clicker Section */
@@ -37,16 +39,17 @@ header h1 {
 #click-button {
     font-size: 1.5rem;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ff6347;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #click-button:hover {
-    background-color: #0056b3;
+    background-color: #e53e3e;
+    transform: scale(1.1);
 }
 
 #money-display {
@@ -58,24 +61,25 @@ header h1 {
 #click-power-display {
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #555;
+    color: #bbb;
 }
 
 /* Upgrades Section */
 #upgrades {
     width: 100%;
     max-width: 500px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s ease-in-out;
 }
 
 #upgrades h2 {
     text-align: center;
     margin-bottom: 15px;
-    color: #007bff;
+    color: #ff6347;
     font-size: 1.8rem;
 }
 
@@ -86,22 +90,29 @@ header h1 {
 }
 
 .upgrade {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
     border-radius: 5px;
     padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.upgrade:hover {
+    transform: translateY(-5px);
 }
 
 .upgrade h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #f39c12;
 }
 
 .upgrade p {
     font-size: 1rem;
     margin: 5px 0;
+    color: #bbb;
 }
 
 .upgrade button {
@@ -112,18 +123,24 @@ header h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.upgrade button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
 }
 
 .upgrade button:hover {
-    background-color: #1e7e34;
+    background-color: #218838;
+    transform: scale(1.1);
 }
 
 /* Footer */
 footer {
     margin-top: 30px;
     font-size: 0.9rem;
-    color: #777;
+    color: #bbb;
 }
 
 /* Responsividade */
@@ -152,5 +169,17 @@ footer {
     .upgrade button {
         font-size: 0.9rem;
         padding: 5px 10px;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

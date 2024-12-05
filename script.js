@@ -32,16 +32,19 @@ clickButton.addEventListener("click", () => {
 function renderUpgrades() {
     upgradeList.innerHTML = ""; // Limpar lista de upgrades
     gameData.upgrades.forEach((upgrade, index) => {
-        const upgradeDiv = document.createElement("div");
-        upgradeDiv.className = "upgrade";
-        upgradeDiv.innerHTML = `
-            <h3>${upgrade.name}</h3>
-            <p>Cost: €<span id="cost-${index}">${Math.floor(upgrade.cost)}</span></p>
-            <p>Effect: +${upgrade.effect} money per click</p>
-            <p>Level: <span id="level-${index}">${upgrade.level}</span></p>
-            <button onclick="buyUpgrade(${index})">Buy</button>
-        `;
-        upgradeList.appendChild(upgradeDiv);
+        // Mostrar apenas upgrades que o usuário pode comprar ou já comprou
+        //if (upgrade.level >= 1 || gameData.money >= Math.floor(upgrade.cost)) {
+            const upgradeDiv = document.createElement("div");
+            upgradeDiv.className = "upgrade";
+            upgradeDiv.innerHTML = `
+                <h3>${upgrade.name}</h3>
+                <p>Cost: €<span id="cost-${index}">${Math.floor(upgrade.cost)}</span></p>
+                <p>Effect: +${upgrade.effect} money per click</p>
+                <p>Level: <span id="level-${index}">${upgrade.level}</span></p>
+                <button onclick="buyUpgrade(${index})" ${gameData.money < Math.floor(upgrade.cost)}>Buy</button>
+            `;
+            upgradeList.appendChild(upgradeDiv);
+        //}
     });
 }
 
